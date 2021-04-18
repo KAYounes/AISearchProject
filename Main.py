@@ -18,7 +18,7 @@ screen = pygame.display.set_mode((hor, ver))
 
 
 #> Instances
-graph = Graph(screen, 95, 45)
+graph = Graph(screen, 95, 43)
 
 
 
@@ -29,7 +29,7 @@ graph = Graph(screen, 95, 45)
 #>
 loop = True
 while(loop):
-    
+    mouse = pygame.mouse.get_pos()
     #$ Event Loop
     for event in pygame.event.get():        
         #$ QUIT event
@@ -38,10 +38,10 @@ while(loop):
         
         if (event.type == pygame.MOUSEBUTTONDOWN):
             if (event.button == 1):
-                graph.addNode(pygame.mouse.get_pos())
+                graph.addNode(mouse)
 
             if (event.button == 3):
-                pass
+                graph.deleteNode(mouse)
 
     screen.fill( (0,0,0) )
 
