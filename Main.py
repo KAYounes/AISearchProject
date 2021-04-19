@@ -38,7 +38,11 @@ while(loop):
         
         if (event.type == pygame.MOUSEBUTTONDOWN):
             if (event.button == 1):
+                print(">", graph.adding)
                 graph.addNode(mouse)
+                print(">", graph.adding)
+                graph.addEdge(mouse)
+                print(">", graph.adding)
 
             if (event.button == 3):
                 graph.deleteNode(mouse)

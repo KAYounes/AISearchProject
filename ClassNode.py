@@ -1,7 +1,7 @@
 from pygame import Vector2
 
 class Node:
-    def __init__(self, x, y, color = (255, 255, 255), radius = 50, width = 15):
+    def __init__(self, x, y, color = (255, 255, 255), radius = 50, width = 0):
         self.cord = Vector2(x,y)
         self.color = color
         self.radius = radius

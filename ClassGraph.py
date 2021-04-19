@@ -6,7 +6,10 @@ class Graph:
         self.screen = surface
         self.addMargin = 95
         self.deleteMargin = 45 
-        self.nodes = [] 
+        self.nodes = []
+        self.edge = []
+        self.edges = []
+        self.adding = False
         
 
     def addNode(self, point):
@@ -15,13 +18,15 @@ class Graph:
                 return
         
         self.nodes.append(Node(point[0], point[1]))
-
+        self.adding = True
 
     def deleteNode(self, point):
         deleteIndices = []
         for idx, node in enumerate(self.nodes):
             if (node.insideNode(point, self.deleteMargin)):
                 deleteIndices.append(idx)
+
+
 
         for index in deleteIndices:
             self.nodes.pop(index)
@@ -30,5 +35,24 @@ class Graph:
         for node in self.nodes:
             pygame.draw.circle(self.screen, node.color, (node.cord), node.radius, node.width)
 
+        
 
+        for edge in self.edges:
+            pygame.draw.line(self.screen, node.color, edge[0], edge[1], 5)
 
+    def addEdge(self, point):
+        if (self.adding):
+            self.adding = False
+        else:
+            for node in self.nodes:
+                if (node.insideNode(point, self.addMargin)):
+                    node.color = (255,0,0)
+                    self.edge.append(node.cord)
+                    if len(self.edge) == 2:
+                        self.edges.append(self.edge)
+                        self.edge = []
+
+                    
+            
+                            
+        
